@@ -35,10 +35,7 @@ window.document.addEventListener('DOMContentLoaded', function () {
       easing: 'easeInOutQuad'
     }
   )
-  .add(
-    {
-      targets: '#shape-top',
-    })
+
 
     var alternate = anime({
       targets: '#shape-top',

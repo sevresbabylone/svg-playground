@@ -22,12 +22,10 @@ body {
   width:100px;
   height:100px;
   background: white;
-  /* position:absolute; */
   margin-top:-50px;
   margin-left:-50px;
   display: block;
   z-index: 2;
-
 }
 
 .shape {
@@ -41,12 +39,82 @@ body {
   background:white;
   position:absolute;
   border-radius:100%;
-  transform: scaleX(0.8) scaleY(1.5);
-    -webkit-box-shadow: 0 3px 0 rgba(0,0,0,.1);
-    box-shadow: 0 3px 0 rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 3px 0 rgba(0,0,0,.1);
+  box-shadow: 0 3px 0 rgba(0,0,0,.1);
+
 }
 
 .shape:hover {
   cursor: pointer;
-  transform: scale(2.5);
+  transform-origin: center;
+  transform: scale(1.1);
+}
+.lines {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+}
+.line {
+  position: relative;
+    width: 16px;
+    height: 2px;
+    background: #de6161;
+    z-index: 2;
+    margin-top: 3px;
+    transform: scale(0);
+    transform-origin: left;
+}
+
+@keyframes button-appear {
+  0% {
+    transform: scaleX(0.8) scaleY(1.5) translateY(-40px);
+  }
+  30% {
+    transform: scaleX(0.8) scaleY(1.5);
+  }
+  50% {
+    transform: scaleX(1) scaleY(0.7);
+  }
+  70% {
+    transform: scaleX(1) scaleY(0.7);
+  }
+  100% {
+    transform:  scaleX(1) scaleY(1);
+
+  }
+}
+@keyframes line-appear {
+  0% {
+    transform: scaleX(0);
+  }
+  90% {
+    transform: scaleX(1.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+.lines .line-appear:nth-of-type(2){
+  -webkit-animation-delay: 1050ms;
+  animation-delay: 1050ms;
+}
+.lines .line-appear:nth-of-type(3){
+  -webkit-animation-delay: 1250ms;
+  animation-delay: 1250ms;
+}
+.line-appear {
+  -webkit-animation: line-appear  200ms 850ms 1 linear ;  Safari 4+
+    -moz-animation:    line-appear 200ms 850ms 1 linear; /* Fx 5+ */
+    -o-animation:      line-appear  200ms 850ms 1 linear; /* Opera 12+ */
+    animation:         line-appear 200ms 850ms 1 linear; /* IE 10+, Fx 29+ */
+    animation-fill-mode: forwards;
+}
+.line-dissapear {
+
+}
+.button-appear {
+  -webkit-animation: button-appear 850ms 300ms 1 ease-in-out ;  Safari 4+
+    -moz-animation:    button-appear 850ms 300ms 1 ease-in-out; /* Fx 5+ */
+    -o-animation:      button-appear 850ms 300ms 1 ease-in-out; /* Opera 12+ */
+    animation:         button-appear 850ms 300ms  1 ease-in-out; /* IE 10+, Fx 29+ */
 }
