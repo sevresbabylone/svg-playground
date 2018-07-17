@@ -54,7 +54,7 @@ body {
   top: 14px;
   left: 15px;
 }
-.line {
+.open.lines .line {
   position: relative;
     width: 16px;
     height: 2px;
@@ -64,7 +64,10 @@ body {
     transform: scale(0);
     transform-origin: left;
 }
-
+.close.lines {
+  width: 16px;
+  height: 2px;
+}
 @keyframes button-appear {
   0% {
     transform: scaleX(0.8) scaleY(1.5) translateY(-40px);
@@ -88,10 +91,22 @@ body {
     transform: scaleX(0);
   }
   90% {
-    transform: scaleX(1.1);
+    transform: scaleX(1.15);
   }
   100% {
     transform: scaleX(1);
+  }
+}
+
+@keyframes line-disappear {
+  0% {
+    transform: translateX(0px);
+  }
+  90% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0px);
   }
 }
 .lines .line-appear:nth-of-type(2){
@@ -102,15 +117,19 @@ body {
   -webkit-animation-delay: 1250ms;
   animation-delay: 1250ms;
 }
+.line-disappear {
+  -webkit-animation: line-disappear  200ms 850ms 1 linear ;  Safari 4+
+    -moz-animation:    line-disappear 200ms 850ms 1 linear; /* Fx 5+ */
+    -o-animation:      line-disappear  200ms 850ms 1 linear; /* Opera 12+ */
+    animation:         line-disappear 200ms 850ms 1 linear; /* IE 10+, Fx 29+ */
+    animation-fill-mode: forwards;
+}
 .line-appear {
   -webkit-animation: line-appear  200ms 850ms 1 linear ;  Safari 4+
     -moz-animation:    line-appear 200ms 850ms 1 linear; /* Fx 5+ */
     -o-animation:      line-appear  200ms 850ms 1 linear; /* Opera 12+ */
     animation:         line-appear 200ms 850ms 1 linear; /* IE 10+, Fx 29+ */
     animation-fill-mode: forwards;
-}
-.line-dissapear {
-
 }
 .button-appear {
   -webkit-animation: button-appear 850ms 300ms 1 ease-in-out ;  Safari 4+

@@ -2,6 +2,8 @@ var gooeyMenuTimeline = anime.timeline()
 
 window.document.addEventListener('DOMContentLoaded', function () {
   var shapeTop = window.document.querySelector('#shape-top')
+  var shape = document.querySelector('.shape')
+  var lines = document.querySelectorAll('.shape .line')
   gooeyMenuTimeline.add(
     {
       targets: '.shape',
@@ -36,7 +38,14 @@ window.document.addEventListener('DOMContentLoaded', function () {
     }
   )
 
-
+  shape.addEventListener('click', function () {
+    Array.prototype.forEach.call(lines, function (line) {
+      console.log(window.getComputedStyle(line).getPropertyValue('transform'))
+      console.log(window.getComputedStyle(line).getPropertyValue('transform'))
+      line.classList.add('line-disappear')
+      line.classList.remove('line-appear')
+    })
+  })
     var alternate = anime({
       targets: '#shape-top',
       duration: 450,
