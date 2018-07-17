@@ -4,10 +4,12 @@ body {
 
 .gooey-menu-container {
   position: absolute;
-      top: -13px;
-      right: 0;
-      width: 170px;
-      height: 150px;
+  margin: 0 auto;
+  top: -13px;
+  left: 0;
+  right: 0;
+  width: 170px;
+  height: 150px;
 }
 .button-container {
   background: #f56d6f;
@@ -56,17 +58,38 @@ body {
 }
 .open.lines .line {
   position: relative;
-    width: 16px;
-    height: 2px;
-    background: #de6161;
-    z-index: 2;
-    margin-top: 3px;
-    transform: scale(0);
-    transform-origin: left;
-}
-.close.lines {
   width: 16px;
   height: 2px;
+  background: #de6161;
+  z-index: 2;
+  margin-top: 3px;
+  transform: scale(0);
+  transform-origin: left;
+}
+.close.lines {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 46px;
+  height: 46px;
+  transform-origin: center center;
+  transform: rotate(45deg);
+}
+.close.lines .line {
+  position: absolute;
+  top: 15px;
+  left: 22px;
+  width: 2px;
+  height: 16px;
+  transform: scaleX(0);
+  background: #a8d0e6;
+}
+.close.lines .line:nth-of-type(2) {
+  width: 16px;
+  height: 2px;
+  top: 22px;
+  left: 15px
+  /* transform: rotate(90deg) scaleX(0); */
 }
 @keyframes button-appear {
   0% {
@@ -83,10 +106,17 @@ body {
   }
   100% {
     transform:  scaleX(1) scaleY(1);
-
   }
 }
-@keyframes line-appear {
+
+.button-appear {
+  -webkit-animation: button-appear 850ms 300ms 1 ease-in-out forwards;  Safari 4+
+  -moz-animation:    button-appear 850ms 300ms 1 ease-in-out forwards; /* Fx 5+ */
+  -o-animation:      button-appear 850ms 300ms 1 ease-in-out forwards; /* Opera 12+ */
+  animation:         button-appear 850ms 300ms  1 ease-in-out forwards; /* IE 10+, Fx 29+ */
+}
+
+@keyframes open-in {
   0% {
     transform: scaleX(0);
   }
@@ -98,42 +128,140 @@ body {
   }
 }
 
-@keyframes line-disappear {
-  0% {
-    transform: translateX(0px);
-  }
-  90% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
+.open-in {
+  -webkit-animation: open-in  200ms 850ms 1 normal forwards;  Safari 4+
+  -moz-animation:    open-in 200ms 850ms 1 normal forwards; /* Fx 5+ */
+  -o-animation:      open-in  200ms 850ms 1 normal forwards; /* Opera 12+ */
+  animation:         open-in 200ms 850ms 1 normal forwards; /* IE 10+, Fx 29+ */
 }
-.lines .line-appear:nth-of-type(2){
+
+.open-in:nth-of-type(2){
   -webkit-animation-delay: 1050ms;
   animation-delay: 1050ms;
 }
-.lines .line-appear:nth-of-type(3){
+
+.open-in:nth-of-type(3){
   -webkit-animation-delay: 1250ms;
   animation-delay: 1250ms;
 }
-.line-disappear {
-  -webkit-animation: line-disappear  200ms 850ms 1 linear ;  Safari 4+
-    -moz-animation:    line-disappear 200ms 850ms 1 linear; /* Fx 5+ */
-    -o-animation:      line-disappear  200ms 850ms 1 linear; /* Opera 12+ */
-    animation:         line-disappear 200ms 850ms 1 linear; /* IE 10+, Fx 29+ */
-    animation-fill-mode: forwards;
+
+@keyframes open-out {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  20% {
+    transform: translateX(-5px) scaleX(1);
+  }
+  100% {
+    transform: translateX(5px) scaleX(0);
+  }
 }
-.line-appear {
-  -webkit-animation: line-appear  200ms 850ms 1 linear ;  Safari 4+
-    -moz-animation:    line-appear 200ms 850ms 1 linear; /* Fx 5+ */
-    -o-animation:      line-appear  200ms 850ms 1 linear; /* Opera 12+ */
-    animation:         line-appear 200ms 850ms 1 linear; /* IE 10+, Fx 29+ */
-    animation-fill-mode: forwards;
+
+.open-out:nth-of-type(1) {
+  animation-delay: 0.16s;
 }
-.button-appear {
-  -webkit-animation: button-appear 850ms 300ms 1 ease-in-out ;  Safari 4+
-    -moz-animation:    button-appear 850ms 300ms 1 ease-in-out; /* Fx 5+ */
-    -o-animation:      button-appear 850ms 300ms 1 ease-in-out; /* Opera 12+ */
-    animation:         button-appear 850ms 300ms  1 ease-in-out; /* IE 10+, Fx 29+ */
+.open-out:nth-of-type(2) {
+  animation-delay: 0.08s;
+}
+
+.open .line.open-out {
+  transform-origin: right;
+  transform: scaleX(1);
+  -webkit-animation: open-out  500ms 0s 1 normal forwards;  Safari 4+
+  -moz-animation: open-out 500ms 0s 1 normal forwards; /* Fx 5+ */
+  -o-animation: open-out  500ms 0s 1 normal forwards; /* Opera 12+ */
+  animation: open-out 500ms 0s 1 normal forwards; /* IE 10+, Fx 29+ */
+}
+
+@keyframes open-out-2 {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  20% {
+    transform: translateX(5px) scaleX(1);
+  }
+  100% {
+    transform: translateX(-5px) scaleX(0) ;
+  }
+}
+
+.open .line.open-out-2 {
+  transform-origin: left;
+  transform: scaleX(1);
+  -webkit-animation: open-out-2  500ms 0s 1 normal forwards;  Safari 4+
+  -moz-animation: open-out-2 500ms 0s 1 normal forwards; /* Fx 5+ */
+  -o-animation: open-out-2  500ms 0s 1 normal forwards; /* Opera 12+ */
+  animation: open-out-2 500ms 0s 1 normal forwards; /* IE 10+, Fx 29+ */
+}
+
+@keyframes close-in {
+  0% {
+    transform: scaleY(0);
+  }
+  90% {
+    transform: scaleY(1.15);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.close-in {
+  transform-origin: 0 0;
+  -webkit-animation: close-in  400ms 500ms 1 normal forwards;  Safari 4+
+  -moz-animation:    close-in 400ms 500ms 1 normal forwards; /* Fx 5+ */
+  -o-animation:      close-in  400ms 500ms 1 normal forwards; /* Opera 12+ */
+  animation:         close-in 400ms 500ms 1 normal forwards; /* IE 10+, Fx 29+ */
+}
+
+@keyframes close-in-2 {
+  0% {
+    transform: scaleX(0);
+  }
+  90% {
+    transform: scaleX(1.15);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.close.lines .line.close-in-2 {
+  transform-origin: 0px 0px;
+  -webkit-animation: close-in-2  400ms 700ms 1 normal forwards;  Safari 4+
+  -moz-animation:    close-in-2 400ms 700ms 1 normal forwards; /* Fx 5+ */
+  -o-animation:      close-in-2  400ms 700ms 1 normal forwards; /* Opera 12+ */
+  animation:         close-in-2 400ms 700ms 1 normal forwards; /* IE 10+, Fx 29+ */
+}
+
+@keyframes close-out {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+.close-out {
+  transform-origin: 1px 16px;
+  -webkit-animation: close-out  400ms 0ms 1 normal forwards;  Safari 4+
+  -moz-animation:    close-out 400ms 0ms 1 normal forwards; /* Fx 5+ */
+  -o-animation:      close-out  400ms 0ms 1 normal forwards; /* Opera 12+ */
+  animation:         close-out 400ms 0ms 1 normal forwards; /* IE 10+, Fx 29+ */
+}
+@keyframes close-out-2 {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+.close.lines .line.close-out-2 {
+  transform-origin: 16px 1px;
+  -webkit-animation: close-out-2  400ms 0ms 1 normal forwards;  Safari 4+
+  -moz-animation:    close-out-2 400ms 0ms 1 normal forwards; /* Fx 5+ */
+  -o-animation:      close-out-2  400ms 0ms 1 normal forwards; /* Opera 12+ */
+  animation:         close-out-2 400ms 0ms 1 normal forwards; /* IE 10+, Fx 29+ */
+
 }

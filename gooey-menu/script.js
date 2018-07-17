@@ -3,7 +3,8 @@ var gooeyMenuTimeline = anime.timeline()
 window.document.addEventListener('DOMContentLoaded', function () {
   var shapeTop = window.document.querySelector('#shape-top')
   var shape = document.querySelector('.shape')
-  var lines = document.querySelectorAll('.shape .line')
+  var openLines = document.querySelectorAll('.open .line')
+  var closeLines = document.querySelectorAll('.close .line')
   gooeyMenuTimeline.add(
     {
       targets: '.shape',
@@ -39,18 +40,52 @@ window.document.addEventListener('DOMContentLoaded', function () {
   )
 
   shape.addEventListener('click', function () {
-    Array.prototype.forEach.call(lines, function (line) {
-      console.log(window.getComputedStyle(line).getPropertyValue('transform'))
-      console.log(window.getComputedStyle(line).getPropertyValue('transform'))
-      line.classList.add('line-disappear')
-      line.classList.remove('line-appear')
-    })
+    if (shape.classList.contains('is-opened')) {
+      shape.classList.remove('is-opened')
+      Array.prototype.forEach.call(closeLines, function (line, index) {
+        if (index === 1) {
+          window.setTimeout(function () {
+            line.classList.remove('close-in-2')
+            line.classList.add('close-out-2')
+          }, 200)
+        } else {
+          line.classList.remove('close-in')
+          line.classList.add('close-out')
+        }
+      })
+      Array.prototype.forEach.call(openLines, function (line, index) {
+        line.classList.remove('open-out')
+        line.classList.remove('open-out-2')
+        line.classList.add('open-in')
+      })
+    } else {
+      shape.classList.add('is-opened')
+      Array.prototype.forEach.call(openLines, function (line, index) {
+        line.classList.remove('open-in')
+
+        if (index === 1) {
+          line.classList.add('open-out-2')
+        } else {
+          line.classList.add('open-out')
+        }
+      })
+      Array.prototype.forEach.call(closeLines, function (line, index) {
+        if (index === 1) {
+          line.classList.remove('close-out-2')
+          line.classList.add('close-in-2')
+        } else {
+          line.classList.remove('close-out')
+          line.classList.add('close-in')
+        }
+      })
+    }
   })
-    var alternate = anime({
-      targets: '#shape-top',
-      duration: 450,
-      easing: 'easeInOutQuad',
-      d: shapeTop.getAttribute('pathdata:id'),
-      direction: 'alternate'
-    })
+
+  var alternate = anime({
+    targets: '#shape-top',
+    duration: 450,
+    easing: 'easeInOutQuad',
+    d: shapeTop.getAttribute('pathdata:id'),
+    direction: 'alternate'
+  })
 })
