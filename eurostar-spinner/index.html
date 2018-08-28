@@ -7,6 +7,12 @@
   <body>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px"
 	 height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+   <defs>
+     <clipPath id="circle-clip" clipPathUnits="userSpaceOnUse">
+       <circle cx="300" cy="300" r="300"/>
+     </clipPath>
+   </defs>
+   <g clip-path="url(#circle-clip)">
 <g id="train-track">
 	<g>
 		<path fill="#70D1D2" d="M598.5,300.5C598.5,135.091,464.745,1,299.75,1S1,135.091,1,300.5c0,99.534,48.445,187.71,122.972,242.171
@@ -109,11 +115,7 @@
 			C207.193,131.753,249.071,159.5,300.5,159.5z"/>
 	</g>
 </g>
-<defs>
-  <clipPath id="user-space" clipPathUnits="userSpaceOnUse">
-    <circle cx="300" cy="300" r="300"/>
-  </clipPath>
-</defs>
+</g>
 </svg>
 
   </body>
