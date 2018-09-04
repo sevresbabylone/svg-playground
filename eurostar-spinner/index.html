@@ -2,7 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Eurostar Spinner</title>
+    <link href="styles.css" rel="stylesheet" title="Mise en forme par défaut">
+
   </head>
   <body>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px"
@@ -11,6 +13,13 @@
      <clipPath id="circle-clip" clipPathUnits="userSpaceOnUse">
        <circle cx="300" cy="300" r="300"/>
      </clipPath>
+   </defs>
+   <defs>
+   <clipPath id="window-clip">
+     <path  d="M300.167,159.5c50.293,0,91.452-26.536,94.776-60.11c-12.61-10.235-27.837-18.086-46.611-22.908
+     		C334.47,72.922,318.688,71,300.583,71h-3.916c-18.441,0-34.475,1.996-48.521,5.685c-17.003,4.466-31.076,11.436-42.923,20.42
+     		C206.86,131.753,248.738,159.5,300.167,159.5z"/>
+   </clipPath>
    </defs>
    <g clip-path="url(#circle-clip)">
 <g id="train-track">
@@ -23,8 +32,9 @@
 		<path fill="#073C68" d="M383.973,435.5l65.306,124.332c9.22-5.354,18.12-11.197,26.683-17.478l-70.447-120.491L383.973,435.5z"/>
 	</g>
 </g>
-<g id="train-moving-track">
-	<rect x="133.099" y="547.078" fill="#073C68" width="326.983" height="28.498"/>
+<g id="moving-tracks">
+  <rect class='moving-track' x="133.099" y="600" fill="#073C68" width="340" height="28.498"/>
+
 </g>
 <g id="train-body">
 	<g id="Layer_1_2_" display="none">
@@ -51,8 +61,6 @@
 		<g id="Layer_4" display="inline">
 			<rect opacity="0.5" fill="#E80C0C" enable-background="new    " width="300" height="600"/>
 		</g>
-	</g>
-	<g id="Layer_6">
 	</g>
 	<g id="grey-train-body">
 		<path fill="#DDDDDD" d="M468.916,259c-11.155-38.644-20.253-76.328-35.059-107.692c-3.89-8.237-8.171-16.04-12.988-23.308
@@ -99,11 +107,6 @@
 		</g>
 	</g>
 </g>
-<g id="Layer_2" display="none">
-
-		<image display="inline" overflow="visible" width="713" height="711" xlink:href="../../../../../../../../Users/admin/Desktop/eurostar-spinner"  transform="matrix(0.8415 0 0 0.8446 1 0)">
-	</image>
-</g>
 <g id="Layer_3">
 	<g>
 		<path fill="#FED330" d="M395.276,99.39c-3.324,33.574-44.483,60.11-94.776,60.11c-51.429,0-93.307-27.747-94.944-62.395
@@ -116,7 +119,28 @@
 	</g>
 </g>
 </g>
+<g id="window-outline">
+	<path fill="#3F4560" d="M394.533,228.251"/>
+	<path fill="#3F4560" d="M394.658,226.813c0,0-7.668,45.812-7.709,46.521c-0.078,1.333-2,10.833-10.541,10.479
+		c-1.938-0.08-5.875-0.5-5.875-0.5l-21.375-1.75c0,0-5.5,0.063-4.5-9c1.104-10.017,1.5-12.5,1.5-12.5l3.25-29.75c0,0,2-10.25,22-14
+		S395.408,218.813,394.658,226.813z"/>
+	<path fill="#FFFFFF" d="M387.366,230.251l-8.333,41c0,0,0,6-7,5.667s-18-1-18-1s-4.626-0.293-4.168-6.001
+		c0.604-7.505,4.75-36.542,4.75-36.542s-0.151-8.861,16.918-11.624C382.865,219.917,389.533,221.584,387.366,230.251z"/>
+	<path fill="#3F4560" d="M209.08,227.917"/>
+	<path fill="#3F4560" d="M208.955,226.48c0,0,7.668,45.812,7.709,46.521c0.078,1.333,2,10.833,10.541,10.479
+		c1.938-0.08,5.875-0.5,5.875-0.5l21.375-1.75c0,0,5.5,0.063,4.5-9c-1.104-10.017-1.5-12.5-1.5-12.5l-3.25-29.75c0,0-2-10.25-22-14
+		S208.205,218.48,208.955,226.48z"/>
+	<path fill="#FFFFFF" d="M216.247,229.917l8.333,41c0,0,0,6,7,5.667s18-1,18-1s4.626-0.293,4.168-6.001
+		c-0.604-7.505-4.75-36.542-4.75-36.542s0.151-8.861-16.918-11.624C220.748,219.583,214.08,221.251,216.247,229.917z"/>
+</g>
+<g clip-path="url(#window-clip)">
+  <g id="reflection">
+  		<rect x="179.295" y="9.477" transform="matrix(0.8632 0.5049 -0.5049 0.8632 76.3674 -83.1119)" fill="#FFFFFF" width="24.461" height="179.732"/>
+  		<rect x="165.852" y="-0.469" transform="matrix(0.8632 0.5049 -0.5049 0.8632 66.7521 -74.0337)" fill="#FFFFFF" width="8.271" height="173.254"/>
+  </g>
+</g>
 </svg>
-
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
+  <script src="script.js"></script>
 </html>
